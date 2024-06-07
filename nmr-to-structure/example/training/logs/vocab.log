@@ -1,0 +1,5 @@
+Corpus corpus_1's weight should be given. We default it to 1 for you.
+[2024-06-07 19:38:33,613 INFO] Counter vocab from -1 samples.
+[2024-06-07 19:38:33,613 INFO] n_sample=-1: Build vocab on full datasets.
+[2024-06-07 19:38:42,792 INFO] Counters src: 20
+[2024-06-07 19:38:42,792 INFO] Counters tgt: 13

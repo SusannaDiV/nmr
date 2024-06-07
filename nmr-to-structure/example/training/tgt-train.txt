@@ -1,0 +1,8 @@
+O = C 1 C C C 2 C = C C ( C C 1 ) O 2
+C C ( C ) C ( P ) = C C 1 = C C O C C 1
+C N C ( O ) C ( O ) O
+C = C 1 C ( C ) C C ( C # N ) C C 1 C
+C c 1 c ( C # N ) o c 2 c c c ( O ) c c 1 2
+C C ( = C N C N ) c 1 c c c c c 1
+C C 1 C C C 2 C ( Br ) C 2 C 1
+C O C C ( = O ) C C ( = O ) O C

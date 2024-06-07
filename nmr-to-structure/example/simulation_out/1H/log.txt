@@ -1,0 +1,55 @@
+19:58:52,406 root INFO Opening MestreNova
+11:37:26,67 root INFO Opening MestreNova
+11:38:25,372 root INFO Opening MestreNova
+11:40:07,326 root INFO Opening MestreNova
+11:40:27,326 root INFO Opening MestreNova
+11:40:45,597 root INFO Opening MestreNova
+12:04:53,505 root INFO Opening MestreNova
+12:06:45,841 root INFO Opening MestreNova
+12:07:01,765 root INFO Opening MestreNova
+12:10:33,9 root INFO Opening MestreNova
+12:14:16,184 root INFO Opening MestreNova in Conda environment
+13:32:22,856 root INFO Opening MestreNova in Conda environment
+13:32:25,385 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:09:58,417 root INFO Opening MestreNova in Conda environment
+14:10:00,931 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:10:32,479 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:10:32,479 root INFO Killing MestreNova
+14:15:28,621 root INFO Opening MestreNova in Conda environment
+14:15:31,148 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:16:02,986 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:16:02,986 root INFO Killing MestreNova
+14:16:34,981 root INFO Opening MestreNova in Conda environment
+14:16:37,493 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:17:09,335 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:17:09,335 root INFO Killing MestreNova
+14:19:50,551 root INFO Opening MestreNova in Conda environment
+14:19:53,79 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:20:25,142 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:20:25,211 root INFO Killing MestreNova
+14:20:28,456 root INFO Opening MestreNova in Conda environment
+14:20:30,968 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:21:02,866 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:21:02,866 root INFO Killing MestreNova
+14:26:23,818 root INFO Opening MestreNova in Conda environment
+14:26:26,347 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:26:55,617 root INFO Opening MestreNova in Conda environment
+14:26:58,151 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:27:29,447 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:27:29,447 root INFO Killing MestreNova
+14:32:39,232 root INFO Opening MestreNova in Conda environment
+14:32:41,743 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:33:13,477 root WARNING Smiles: COCC(=O)CC(=O)OC, index: 0 timed out reopening MestreNova and skipping.
+14:33:13,477 root INFO Killing MestreNova
+14:48:57,910 root INFO Opening MestreNova in Conda environment
+14:49:00,439 root INFO Running: index 0 smiles COCC(=O)CC(=O)OC output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_0.csv
+14:49:04,22 root INFO Running: index 1 smiles CC(C)C(P)=CC1=CCOCC1 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_1.csv
+14:49:08,193 root INFO Running: index 2 smiles O=C1CCC2C=CC(CC1)O2 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_2.csv
+14:49:10,823 root INFO Running: index 3 smiles CC(=CNCN)c1ccccc1 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_3.csv
+14:49:13,485 root INFO Running: index 4 smiles C=C1C(C)CC(C#N)CC1C output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_4.csv
+14:49:16,132 root INFO Running: index 5 smiles CNC(O)C(O)O output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_5.csv
+14:49:18,661 root INFO Running: index 6 smiles O=C(O)C(O)=CC1(O)CCCCC1 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_6.csv
+14:49:31,456 root INFO Running: index 7 smiles CC1CCC2C(Br)C2C1 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_7.csv
+14:49:50,410 root INFO Running: index 8 smiles Cc1c(C#N)oc2ccc(O)cc12 output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_8.csv
+14:49:59,877 root INFO Running: index 9 smiles NC(CCN1CC=CC1)C(=O)O output_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H\1H_9.csv
+14:50:16,217 root INFO Killing MestreNova

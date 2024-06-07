@@ -1,0 +1,63 @@
+# transformer_template.yaml
+
+## Where the samples will be written
+save_data: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training
+
+## Where the vocab(s) will be written
+src_vocab: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\vocab\vocab.src
+tgt_vocab: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\vocab\vocab.tgt 
+
+overwrite: True
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\src-train.txt #data/src-train.txt
+        path_tgt: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\tgt-train.txt #data/tgt-train.txt
+    valid:
+        path_src: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\src-val.txt #data/src-val.txt
+        path_tgt: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\tgt-val.txt #data/tgt-val.txt
+
+
+# Tensorboard
+tensorboard: True
+tensorboard_log_dir: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training
+
+# Where to save the checkpoints
+save_model: C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training\vocab\vocab.src #data/run/model
+save_checkpoint_steps: 10000
+
+# Model parameters
+keep_checkpoint: 10
+seed: 3435
+train_steps: 5
+valid_steps: 2
+warmup_steps: 8000
+report_every: 2
+
+decoder_type: transformer
+encoder_type: transformer
+word_vec_size: 32
+hidden_size: 32
+layers: 2
+transformer_ff: 32
+heads: 2
+
+accum_count: 8 
+optim: adam
+adam_beta1: 0.9
+adam_beta2: 0.998
+decay_method: noam
+learning_rate: 2.0
+max_grad_norm: 0.0
+
+batch_size: 512
+batch_type: tokens
+normalization: tokens
+dropout: 0.3
+attention_dropout: 0.2
+label_smoothing: 0.1
+
+param_init: 0.0
+param_init_glorot: 'true'
+position_encoding: 'true'

@@ -1,0 +1,150 @@
+Metadata-Version: 2.1
+Name: nmr_to_structure
+Version: 0.0.0
+Summary: Code to reproduce NMR to Structure paper
+Author: Marvin Alberts
+Author-email: marvin.alberts@ibm.com
+License: MIT
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click>=8.0.4
+Requires-Dist: pandas>=1.4.2
+Requires-Dist: numpy>=1.23.0
+Requires-Dist: scipy>=1.7.3
+Requires-Dist: scikit-learn>=1.1.3
+Requires-Dist: regex>=2022.3.15
+Requires-Dist: tqdm>=4.64.0
+Requires-Dist: rdkit>=2022.9.1
+Requires-Dist: tqdm>=4.65.0
+Requires-Dist: opennmt-py>=3.0.3
+Requires-Dist: PyAutoGUI>=0.9.53
+Requires-Dist: rxn-chem-utils>=1.1.4
+Provides-Extra: dev
+Requires-Dist: black>=23.1.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: isort>=5.12.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: pandas-stubs>=2.0.1.230501; extra == "dev"
+Requires-Dist: types-psutil>=5.9.5.16; extra == "dev"
+Requires-Dist: types-PyAutoGUI>=0.9.3.7; extra == "dev"
+Requires-Dist: types-regex>=2023.6.3.1; extra == "dev"
+Requires-Dist: types-tqdm>=4.65.0.2; extra == "dev"
+
+# NMR to Structure
+
+This code accompanies the paper [Learning the Language of NMR: Structure Elucidation from NMR spectra using Transformer Models](https://ibm.biz/nmr_to_struc). The repo contains scripts to simulate NMR spectra, prepare the data and train models.
+
+
+## Installation guide
+
+Create a conda environment for the scripts:
+
+```
+conda create -n nmr python=3.9
+conda activate nmr
+```
+
+Clone the repository and instal via: 
+
+```
+pip install .
+```
+
+For development install via:
+
+```
+pip install -e .[dev]
+```
+
+## Simulating NMR spectra
+
+This section explains how to simulate NMR spectra using MestreNova. A working version of MestreNova is required. 
+
+### Running the simulations
+
+Running the MestreNova script requires a .csv file containing SMILES of the molecules for which NMR spectra will be generated. This .csv file requires one columns, `Smiles`. The index of the smiles is used to name the output files. An 'example.csv' is provided. To run the simulations run the following script:
+
+```
+run_simulation --smiles_csv C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\smiles.csv --out_folder C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H --sim_type 1H --mnova_path "C:\Program Files\Mestrelab Research S.L\MestReNova\MestReNova.exe" --script_path "C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\src\nmr_to_structure\nmr_generation\mestre_nova_scripts"
+```
+
+The MestreNova simulation scripts can be found here [link to folder]. This script uses the MestreNova scripting tool to run the simulations. As a result all MestreNova will be opened and you will be able to see how spectra are simulated. A file is saved for each molecule.
+
+To run the simulations for <sup>13</sup>C simply replace the `--sim_type` with `13C`.
+
+
+### Compiling the data
+
+After running the script the files need to be compiled into one dataframe making handling easier. This can be accomplished via the `gather_data` script. To gather the data from the <sup>1</sup>H simulation from the above example use:
+
+```
+gather_data --results_folder "C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\1H" --out_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\results.pkl --sim_type 1H
+```
+
+This compiles the data into a format readable by the scripts to prepare the data for training. In the above example the dataframe only contains <sup>1</sup>H NMR spectra. To include <sup>13</sup>C NMRs as well, use the optional argument `--add_to_existing_df` upon which the additional NMR information will be added to the same dataframe and saved according to the path set with `--out_path`. Additionally, set the `--sim_type` to `13C`.
+
+
+## Preparing the input data
+
+The following scripts will use the data generated in the previous steps, format the NMRs, tokenize the strings and split into a train, test and validation set. 
+
+### Task 1: NMR to Structure
+This script can be used to prepare training data for a model that predicts the structure from the NMR. Using the data from above, training data can be prepared as such:
+
+```
+prepare_nmr_input --nmr_data C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\results.pkl --out_path C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\training --mode hnmr
+```
+The above command will prepare training data for a model that predicts the structure solely from a <sup>1</sup>H NMR. Further options are available as described in the paper.
+
+### Task 2: Reaction data + NMR to Structure
+
+The following script prepares training data for the second task of predicting the correct molecule from a set given the NMR spectrum. Additionally, a file containg reactions from which to build the molecule sets is required. The script expects this file to be a pickled dataframe of one column  Use the following syntax to run the script:
+
+```
+prepare_nmr_rxn_input --nmr_data C:\Users\susan\OneDrive\Desktop\Semester\nmr-to-structure\example\simulation_out\results.pkl --rxn_data <path to Reaction file> --out_path example/training/1H --mode hnmr
+```
+
+
+## Training a model
+
+Run a training of the model using the run_training.py script. This script requires a directory with a subfolder called data which contains the training, validation and test data as generated by the two scripts above. Another requirement is a path to a OpenNMT configuration template. The template with which all trainings were performed in the template is provided in src/nmr_to_structure/training/transformer_template.yaml.
+
+For the example try:
+```
+train_model --template_path src/nmr_to_structure/training/transformer_template.yaml --data_folder example/train
+```
+Note: The template expects a GPU to be present and to run a real training much more data is required.
+
+For testing purposes, training a model for only few steps with a tiny model on CPU only:
+```
+train_model --template_path src/nmr_to_structure/training/transformer_template_tiny_cpu.yaml --data_folder example/training/1H
+```
+## Inference
+Run the following command to do inference:
+```
+onmt_translate -model <model_path> -src <src_path> -output <out_file> -beam_size 10 -n_best 10 -min_length 5 -gpu 0
+```
+For the example (dummy model, valid set, CPU only), this corresponds to the following:
+
+```
+onmt_translate -model example/training/1H/model_step_5.pt -src example/training/1H/data/src-val.txt -output example/training/1H/pred-val.txt -beam_size 10 -n_best 10 -min_length 5
+```
+
+## Scoring
+Scoring can be done via the score.py script:
+
+```
+python scripts/score.py --tgt_path <path to tgt file> --inference_path <out file from inference> 
+```
+
+For the example above:
+
+```
+score_model --tgt_path example/training/1H/data/tgt-val.txt --inference_path example/training/1H/pred-val.txt
+```
+
+Use --n_beams if the beam size is changed from 10 during inference.
